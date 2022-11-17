@@ -17,8 +17,7 @@ class Repository extends IRepository {
           .map<CharacterModel>(
               (characters) => CharacterModel.fromJson(characters))
           .toList();
-      print(characters);
-
+     
       return characters;
     } catch (e) {
       rethrow;
