@@ -1,54 +1,7 @@
+import 'package:flutter_rick_and_morty_catalog/models/location_model.dart';
+
 class CharacterModel {
   CharacterModel({
-    required this.info,
-    required this.results,
-  });
-
-  final Info info;
-  final List<Result> results;
-
-  factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
-        info: Info.fromJson(json["info"]),
-        results:
-            List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "info": info.toJson(),
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
-      };
-}
-
-class Info {
-  Info({
-    required this.count,
-    required this.pages,
-    required this.next,
-    required this.prev,
-  });
-
-  final int count;
-  final int pages;
-  final String next;
-  final dynamic prev;
-
-  factory Info.fromJson(Map<String, dynamic> json) => Info(
-        count: json["count"],
-        pages: json["pages"],
-        next: json["next"],
-        prev: json["prev"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "count": count,
-        "pages": pages,
-        "next": next,
-        "prev": prev,
-      };
-}
-
-class Result {
-  Result({
     required this.id,
     required this.name,
     required this.status,
@@ -76,7 +29,7 @@ class Result {
   final String url;
   final DateTime created;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         id: json["id"],
         name: json["name"],
         status: json["status"],
@@ -107,22 +60,4 @@ class Result {
       };
 }
 
-class Location {
-  Location({
-    required this.name,
-    required this.url,
-  });
 
-  final String name;
-  final String url;
-
-  factory Location.fromJson(Map<String, dynamic> json) => Location(
-        name: json["name"],
-        url: json["url"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-      };
-}
