@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 
 abstract class CharacterTheme {
   static ThemeData get dark => ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Poppins',
-        brightness: Brightness.dark,
-        appBarTheme: const AppBarTheme(
-          toolbarHeight: 100,
-          backgroundColor: Colors.white,
-          titleTextStyle: TextStyle(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      fontFamily: 'Poppins',
+      brightness: Brightness.dark,
+      appBarTheme: const AppBarTheme(
+        toolbarHeight: 100,
+        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(
+            color: AppColors.primaryColor,
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Poppins'),
+        elevation: 0,
+      ),
+      scaffoldBackgroundColor: AppColors.primaryColor,
 
-              color: Color(0xff202329),
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-              fontFamily: 'Poppins'),
-          elevation: 0,
-        ),
-        scaffoldBackgroundColor: const Color(0xff202329),
       );
 }
