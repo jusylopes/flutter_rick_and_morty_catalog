@@ -14,23 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<CharacterModel> _character = [];
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _onScroll();
-  }
-
-  void _onScroll() {
-    _scrollController.addListener(() async {
-      if (_scrollController.position.maxScrollExtent ==
-              _scrollController.offset &&
-          !context.read<CharactersCubit>().isLoading) {
-        context.read<CharactersCubit>().loadAllCharacters();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +56,5 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ));
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 }

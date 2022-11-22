@@ -8,20 +8,15 @@ class CharactersCubit extends Cubit<CharactersState> {
   }
 
   final Repository repository;
-  int initialPage = 1;
-  bool isLoading = false;
 
   Future<void> loadAllCharacters() async {
     try {
       emit(LoadingState());
       print('loading');
-      isLoading = true;
 
-      final response = await repository.loadAllCharacters(page: initialPage);
-      initialPage++;
-      print(response);
+      final response = await repository.loadAllCharacters(page: 2);
+
       emit(SuccessState(characters: response));
-      isLoading = false;
     } catch (e) {
       emit(ErrorState());
     }
