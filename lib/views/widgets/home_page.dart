@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,6 +13,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<CharacterModel> _character = [];
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +47,32 @@ class _HomePageState extends State<HomePage> {
 
             return BlocBuilder<CharactersBloc, CharactersState>(
               builder: (context, state) {
-                if (state is InitialState || state is LoadingState) {
+                if (state is InitialState ||
+                    state is LoadingState && _character.isEmpty) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is ErrorState) {
-                  return const Center();
+                } else if (state is ErrorState && _character.isEmpty) {
+                  return const Center(
+                    child: Text('erro'),
+                  );
                 } else if (state is SuccessState) {
                   _character.addAll(state.characters);
                 }
-                return ListView.builder(
+                return ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 10),
+                    controller: _scrollController
+                      ..addListener(() async {
+                        if (_scrollController.position.pixels ==
+                                _scrollController.position.maxScrollExtent &&
+                            !BlocProvider.of<CharactersBloc>(context)
+                                .isFetching) {
+                          BlocProvider.of<CharactersBloc>(context)
+                              .add(LoadCharactersEvent());
+                        }
+                      }),
                     itemCount: _character.length,
                     itemBuilder: (context, index) =>
-                        Text(_character[index].name));
+                        Text('${index.toString()}  ${_character[index].name}'));
               },
             );
           },
