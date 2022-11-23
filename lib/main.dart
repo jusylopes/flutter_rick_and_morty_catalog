@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rick_and_morty_catalog/cubit/characters/characters_cubit.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/theme.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/home_page.dart';
@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (_) => CharactersCubit(repository: characterRepository)),
+        BlocProvider<CharactersBloc>(
+            create: (_) => CharactersBloc(repository: characterRepository)
+              ..add(LoadCharactersEvent())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

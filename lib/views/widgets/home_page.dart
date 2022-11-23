@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rick_and_morty_catalog/cubit/characters/characters_cubit.dart';
-import 'package:flutter_rick_and_morty_catalog/cubit/characters/characters_state.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             final double maxWidth = constraints.maxWidth;
             final double maxHeight = constraints.maxHeight;
 
-            return BlocBuilder<CharactersCubit, CharactersState>(
+            return BlocBuilder<CharactersBloc, CharactersState>(
               builder: (context, state) {
                 if (state is InitialState || state is LoadingState) {
                   return const Center(child: CircularProgressIndicator());
