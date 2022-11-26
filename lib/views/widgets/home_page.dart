@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                 }
                 return ListView.separated(
                     separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
                     controller: _scrollController
                       ..addListener(() async {
                         if (_scrollController.position.pixels ==
@@ -71,18 +71,24 @@ class _HomePageState extends State<HomePage> {
                         }
                       }),
                     itemCount: _character.length,
-                    itemBuilder: (context, index) =>
-                        Text('${index.toString()}  ${_character[index].name}'));
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                          _character[index].name,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                      );
+                    });
               },
             );
           },
         ));
   }
 
-@override
+  @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();
   }
-
 }
