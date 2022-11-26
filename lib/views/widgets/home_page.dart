@@ -57,9 +57,7 @@ class _HomePageState extends State<HomePage> {
                 } else if (state is SuccessState) {
                   _character.addAll(state.characters);
                 }
-                return ListView.separated(
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 5),
+                return ListView.builder(
                     controller: _scrollController
                       ..addListener(() async {
                         if (_scrollController.position.pixels ==
@@ -72,12 +70,29 @@ class _HomePageState extends State<HomePage> {
                       }),
                     itemCount: _character.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                          _character[index].name,
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 8,
                         ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            height: 100,
+                            color: AppColors.secondaryColor,
+                            child: Row(
+                              children: <Widget>[
+                                Image.network(
+                                  _character[index].image,
+                                  filterQuality: FilterQuality.high,
+                                ),
+                                Text(
+                                  _character[index].name,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       );
                     });
               },
