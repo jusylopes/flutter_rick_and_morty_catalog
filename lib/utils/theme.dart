@@ -7,11 +7,11 @@ abstract class CharacterTheme {
       fontFamily: 'Poppins',
       brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         backgroundColor: Colors.white,
         titleTextStyle: TextStyle(
             color: AppColors.primaryColor,
-            fontSize: 28,
+            fontSize: 22,
             fontWeight: FontWeight.w700,
             fontFamily: 'Poppins'),
         elevation: 0,

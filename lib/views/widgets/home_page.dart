@@ -50,7 +50,10 @@ class _HomePageState extends State<HomePage> {
               builder: (context, state) {
                 if (state is InitialState ||
                     state is LoadingState && character.isEmpty) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                    child: CircularProgressIndicator(
+                        color: AppColors.secondaryColor),
+                  );
                 } else if (state is ErrorState && character.isEmpty) {
                   return const Center(
                     child: Text('erro'),
@@ -59,75 +62,20 @@ class _HomePageState extends State<HomePage> {
                   character.addAll(state.characters);
                 }
                 return ListView.builder(
-                    controller: _scrollController
-                      ..addListener(() async {
-                        if (_scrollController.position.pixels ==
-                                _scrollController.position.maxScrollExtent &&
-                            !BlocProvider.of<CharactersBloc>(context)
-                                .isFetching) {
-                          BlocProvider.of<CharactersBloc>(context)
-                              .add(LoadCharactersEvent());
-                        }
-                      }),
-                    itemCount: character.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 8,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: 100,
-                            color: AppColors.secondaryColor,
-                            child: Row(
-                              children: <Widget>[
-                                Image.network(
-                                  character[index].image,
-                                  filterQuality: FilterQuality.high,
-                                ),
-                                Expanded(
-                                  child: ListTile(
-                                    title: Text(
-                                      character[index].name,
-                                      style: CharacterTextStyle.characterName,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    subtitle: Row(
-                                      children: [
-                                        Container(
-                                          height: 10,
-                                          width: 10,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            color: character[index].status ==
-                                                    'Alive'
-                                                ? Colors.green
-                                                : character[index].status ==
-                                                        'Dead'
-                                                    ? Colors.red
-                                                    : Colors.grey,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 5),
-                                        Text(
-                                          '${character[index].status} - ${character[index].species}',
-                                          style: CharacterTextStyle
-                                              .characterStatus,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    });
+                  controller: _scrollController
+                    ..addListener(() async {
+                      if (_scrollController.position.pixels ==
+                              _scrollController.position.maxScrollExtent &&
+                          !BlocProvider.of<CharactersBloc>(context)
+                              .isFetching) {
+                        BlocProvider.of<CharactersBloc>(context)
+                            .add(LoadCharactersEvent());
+                      }
+                    }),
+                  itemCount: character.length,
+                  itemBuilder: (context, index) =>
+                      CardCharacter(character: character[index]),
+                );
               },
             );
           },
@@ -138,5 +86,74 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+}
+
+class CardCharacter extends StatelessWidget {
+  const CardCharacter({
+    Key? key,
+    required this.character,
+  }) : super(key: key);
+
+  final CharacterModel character;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 8,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          color: AppColors.secondaryColor,
+          child: Row(
+            children: <Widget>[
+              Image.network(
+                character.image,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 25),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    character.name,
+                    style: CharacterTextStyle.characterName,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: character.status == 'Alive'
+                              ? Colors.green
+                              : character.status == 'Dead'
+                                  ? Colors.red
+                                  : Colors.grey,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        '${character.status} - ${character.species}',
+                        style: CharacterTextStyle.characterStatus,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
