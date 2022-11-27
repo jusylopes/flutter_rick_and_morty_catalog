@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-abstract class CharacterTextStyles {
-  TextStyle characterName = const TextStyle(
+abstract class CharacterTextStyle {
+  static const characterName = TextStyle(
     fontSize: 20.0,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
 
-  TextStyle characterStatus = const TextStyle(
-    fontSize: 12.0,
+  static const characterStatus = TextStyle(
+    fontSize: 14.0,
     color: Colors.white,
   );
 }

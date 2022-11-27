@@ -3,6 +3,7 @@ import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.d
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<CharacterModel> _character = [];
+  final List<CharacterModel> character = [];
   late ScrollController _scrollController;
 
   @override
@@ -48,14 +49,14 @@ class _HomePageState extends State<HomePage> {
             return BlocBuilder<CharactersBloc, CharactersState>(
               builder: (context, state) {
                 if (state is InitialState ||
-                    state is LoadingState && _character.isEmpty) {
+                    state is LoadingState && character.isEmpty) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is ErrorState && _character.isEmpty) {
+                } else if (state is ErrorState && character.isEmpty) {
                   return const Center(
                     child: Text('erro'),
                   );
                 } else if (state is SuccessState) {
-                  _character.addAll(state.characters);
+                  character.addAll(state.characters);
                 }
                 return ListView.builder(
                     controller: _scrollController
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                               .add(LoadCharactersEvent());
                         }
                       }),
-                    itemCount: _character.length,
+                    itemCount: character.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
@@ -83,11 +84,43 @@ class _HomePageState extends State<HomePage> {
                             child: Row(
                               children: <Widget>[
                                 Image.network(
-                                  _character[index].image,
+                                  character[index].image,
                                   filterQuality: FilterQuality.high,
                                 ),
-                                Text(
-                                  _character[index].name,
+                                Expanded(
+                                  child: ListTile(
+                                    title: Text(
+                                      character[index].name,
+                                      style: CharacterTextStyle.characterName,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    subtitle: Row(
+                                      children: [
+                                        Container(
+                                          height: 10,
+                                          width: 10,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: character[index].status ==
+                                                    'Alive'
+                                                ? Colors.green
+                                                : character[index].status ==
+                                                        'Dead'
+                                                    ? Colors.red
+                                                    : Colors.grey,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        Text(
+                                          '${character[index].status} - ${character[index].species}',
+                                          style: CharacterTextStyle
+                                              .characterStatus,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
