@@ -106,51 +106,57 @@ class CardCharacter extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Container(
-          height: 100,
-          width: double.infinity,
-          color: AppColors.secondaryColor,
-          child: Row(
-            children: <Widget>[
-              Image.network(
-                character.image,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(width: 25),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Material(
+          child: InkWell(
+            onTap: () {},
+            splashColor: AppColors.primaryColor.withOpacity(0.1),
+            child: Ink(
+              height: 100,
+              width: double.infinity,
+              color: AppColors.secondaryColor,
+              child: Row(
                 children: <Widget>[
-                  Text(
-                    character.name,
-                    style: CharacterTextStyle.characterName,
-                    overflow: TextOverflow.ellipsis,
+                  Image.network(
+                    character.image,
+                    fit: BoxFit.cover,
                   ),
-                  Row(
+                  const SizedBox(width: 25),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        height: 10,
-                        width: 10,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: character.status == 'Alive'
-                              ? Colors.green
-                              : character.status == 'Dead'
-                                  ? Colors.red
-                                  : Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
                       Text(
-                        '${character.status} - ${character.species}',
-                        style: CharacterTextStyle.characterStatus,
+                        character.name,
+                        style: CharacterTextStyle.characterName,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: character.status == 'Alive'
+                                  ? Colors.green
+                                  : character.status == 'Dead'
+                                      ? Colors.red
+                                      : Colors.grey,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            '${character.status} - ${character.species}',
+                            style: CharacterTextStyle.characterStatus,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ],
-                  ),
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
