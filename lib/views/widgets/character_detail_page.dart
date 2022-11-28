@@ -25,7 +25,7 @@ class CharacterDetailPage extends StatelessWidget {
 
             return SingleChildScrollView(
               child: Stack(
-                alignment: AlignmentDirectional.center,
+                alignment: AlignmentDirectional.topCenter,
                 children: <Widget>[
                   Container(
                     width: double.infinity,
@@ -34,6 +34,13 @@ class CharacterDetailPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: AppColors.secondaryColor,
                         borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    height: 180,
+                    width: 180,
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(character.image),
+                    ),
                   )
                 ],
               ),
