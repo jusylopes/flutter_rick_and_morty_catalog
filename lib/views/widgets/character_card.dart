@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
@@ -24,11 +23,13 @@ class CharacterCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: Material(
           child: InkWell(
-            onTap: () {   Navigator.push(
+            onTap: () {
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CharacterDetailPage(character: character)));},
+                          CharacterDetailPage(character: character)));
+            },
             splashColor: AppColors.primaryColor.withOpacity(0.1),
             child: Ink(
               height: 100,
@@ -55,13 +56,9 @@ class CharacterCard extends StatelessWidget {
                           Container(
                             height: 10,
                             width: 10,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: character.status == 'Alive'
-                                  ? Colors.green
-                                  : character.status == 'Dead'
-                                      ? Colors.red
-                                      : Colors.grey,
+                            decoration:  BoxDecoration(
+                              shape: BoxShape.circle,                              
+                               color: getColorStatus(character.status),
                             ),
                           ),
                           const SizedBox(width: 5),
@@ -81,5 +78,13 @@ class CharacterCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color getColorStatus(String status) {
+    return status == 'Alive'
+        ? Colors.green
+        : status == 'Dead'
+            ? Colors.red
+            : Colors.grey;
   }
 }

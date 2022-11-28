@@ -26,14 +26,7 @@ class CharacterDetailPage extends StatelessWidget {
 
             return SingleChildScrollView(
               child: Stack(
-                children:  <Widget>[
-                
-                Container(),
-
-
-
-
-                ],
+                children: const [],
               ),
             );
           },
