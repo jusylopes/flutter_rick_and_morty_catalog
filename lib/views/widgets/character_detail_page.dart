@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 
 class CharacterDetailPage extends StatelessWidget {
@@ -11,10 +12,8 @@ class CharacterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: true,
           title: Text(
             character.name,
             style: CharacterTextStyle.characterName,
@@ -22,11 +21,21 @@ class CharacterDetailPage extends StatelessWidget {
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
-            final double maxWidth = constraints.maxWidth;
+            final double maxHeight = constraints.maxHeight;
 
             return SingleChildScrollView(
               child: Stack(
-                children: const [],
+                alignment: AlignmentDirectional.center,
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    height: maxHeight * 0.8,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                        color: AppColors.secondaryColor,
+                        borderRadius: BorderRadius.circular(10)),
+                  )
+                ],
               ),
             );
           },
