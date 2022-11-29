@@ -58,7 +58,7 @@ class CharacterCard extends StatelessWidget {
                             width: 10,
                             decoration:  BoxDecoration(
                               shape: BoxShape.circle,                              
-                               color: getColorStatus(character.status),
+                               color: AppColors.colorStatus(character.status),
                             ),
                           ),
                           const SizedBox(width: 5),
@@ -80,11 +80,5 @@ class CharacterCard extends StatelessWidget {
     );
   }
 
-  Color getColorStatus(String status) {
-    return status == 'Alive'
-        ? Colors.green
-        : status == 'Dead'
-            ? Colors.red
-            : Colors.grey;
-  }
+ 
 }

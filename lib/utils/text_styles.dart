@@ -11,4 +11,15 @@ abstract class CharacterTextStyle {
     fontSize: 14.0,
     color: Colors.white,
   );
+
+  static const characterNameDetail = TextStyle(
+    fontSize: 22.0,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+   static const characterTextDetail = TextStyle(
+    fontSize: 15.0,
+    color: Colors.white,
+  );
 }

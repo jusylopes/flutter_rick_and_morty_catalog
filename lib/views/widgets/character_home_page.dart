@@ -5,15 +5,14 @@ import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
 
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class CharacterHomePage extends StatefulWidget {
+  const CharacterHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CharacterHomePage> createState() => _CharacterHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CharacterHomePageState extends State<CharacterHomePage> {
   final List<CharacterModel> character = [];
   late ScrollController _scrollController;
 
