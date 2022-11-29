@@ -7,6 +7,7 @@ class Repository extends IRepository {
 
   final Dio dio;
   static const _baseApi = 'https://rickandmortyapi.com';
+
   @override
   Future<List<CharacterModel>> loadAllCharacters({required int page}) async {
     try {
@@ -17,7 +18,7 @@ class Repository extends IRepository {
           .map<CharacterModel>(
               (characters) => CharacterModel.fromJson(characters))
           .toList();
-     
+
       return characters;
     } catch (e) {
       rethrow;

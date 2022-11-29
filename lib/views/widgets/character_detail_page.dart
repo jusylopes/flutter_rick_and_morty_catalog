@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 
 class CharacterDetailPage extends StatelessWidget {
   const CharacterDetailPage({Key? key, required this.character})
@@ -12,37 +11,36 @@ class CharacterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text(
-            character.name,
-            style: CharacterTextStyle.characterName,
-          ),
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
             final double maxHeight = constraints.maxHeight;
 
             return SingleChildScrollView(
-              child: Stack(
-                alignment: AlignmentDirectional.topCenter,
-                children: <Widget>[
-                  Container(
-                    width: double.infinity,
-                    height: maxHeight * 0.8,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                        color: AppColors.secondaryColor,
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
-                  SizedBox(
-                    height: 180,
-                    width: 180,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(character.image),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Stack(
+                  alignment: AlignmentDirectional.topCenter,
+                  children: <Widget>[
+                    Container(
+                      height: maxHeight *0.8,
+                      margin: const EdgeInsets.only(top: 75, left: 20, right: 20),
+                      decoration: BoxDecoration(
+                          color: AppColors.secondaryColor,
+                          borderRadius: BorderRadius.circular(30)),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(character.image),
+                      ),
+                    )
+                  ],
+                ),
               ),
             );
           },
