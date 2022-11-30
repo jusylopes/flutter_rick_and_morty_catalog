@@ -35,8 +35,8 @@ class CharacterDetailPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      character.name,
-                      style: CharacterTextStyle.characterName,
+                      character.name.toUpperCase(),
+                      style: CharacterTextStyle.characterNameDetail,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Container(
@@ -45,7 +45,7 @@ class CharacterDetailPage extends StatelessWidget {
                           horizontal: 20, vertical: 5),
                       decoration: BoxDecoration(
                           color: AppColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(20)),
                     ),
                   ],
                 ),
