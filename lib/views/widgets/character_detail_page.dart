@@ -31,25 +31,20 @@ class CharacterDetailPage extends StatelessWidget {
                   children: <Widget>[
                     Hero(
                       tag: character.id,
-                      child: ClipRRect(
-                         borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator(
-                            color: AppColors.primaryColor,
-                          )),
-                          imageUrl: character.image,
-                          height: 200,
+                      child: ClipOval(
+                        child: SizedBox.fromSize(
+                          size: const Size.fromRadius(80),
+                          child: CachedNetworkImage(
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(
+                              color: AppColors.primaryColor,
+                            )),
+                            imageUrl: character.image,
+                          ),
                         ),
                       ),
                     ),
-                    // SizedBox(
-                    //   height: 180,
-                    //   width: 180,
-                    //   child: CircleAvatar(
-                    //     backgroundImage: NetworkImage(character.image),
-                    //   ),
-                    // ),
+                  
                     const SizedBox(
                       height: 10,
                     ),
