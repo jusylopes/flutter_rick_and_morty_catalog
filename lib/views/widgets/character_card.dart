@@ -3,6 +3,7 @@ import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_detail_page.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_status_circle.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard({
@@ -41,35 +42,29 @@ class CharacterCard extends StatelessWidget {
                     character.image,
                     fit: BoxFit.cover,
                   ),
-                  const SizedBox(width: 25),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        character.name,
-                        style: CharacterTextStyle.characterName,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration:  BoxDecoration(
-                              shape: BoxShape.circle,                              
-                               color: AppColors.colorStatus(character.status),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          character.name,
+                          style: CharacterTextStyle.characterName,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            CharacterStatusCircle(status: character.status),
+                            const SizedBox(width: 5),
+                            Text(
+                              '${character.status} - ${character.species}',
+                              style: CharacterTextStyle.characterStatus,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            '${character.status} - ${character.species}',
-                            style: CharacterTextStyle.characterStatus,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -79,6 +74,4 @@ class CharacterCard extends StatelessWidget {
       ),
     );
   }
-
- 
 }
