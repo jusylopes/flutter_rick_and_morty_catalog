@@ -24,7 +24,7 @@ class CharacterCardData extends StatelessWidget {
           Row(
             children: <Widget>[
               CharacterStatusCircle(status: character.status),
-              const SizedBox(width: 5),
+              const SizedBox(width: 8),
               Text(
                 '${character.status} - ${character.species}',
                 style: CharacterTextStyle.characterStatus,

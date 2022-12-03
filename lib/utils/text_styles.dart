@@ -18,12 +18,12 @@ abstract class CharacterTextStyle {
     color: Colors.white,
   );
 
-   static const informationTitleRow = TextStyle(
+  static const informationTitleRow = TextStyle(
     fontSize: 18.0,
     color: Colors.grey,
   );
 
-   static const informationTextRow = TextStyle(
+  static const informationTextRow = TextStyle(
     fontSize: 18.0,
     color: Colors.white,
   );
