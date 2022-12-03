@@ -4,23 +4,22 @@ import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 
 class CharacterImage extends StatelessWidget {
-  const CharacterImage({super.key, required this.character});
+  const CharacterImage(
+      {super.key, required this.character, required this.size});
 
   final CharacterModel character;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      
-      tag: character.id,
-      child: CachedNetworkImage(
-        fit: BoxFit.cover,
-        placeholder: (context, url) => const Center(
-            child: CircularProgressIndicator(
-          color: AppColors.primaryColor,
-        )),
-        imageUrl: character.image,
-      ),
+    return CachedNetworkImage(
+      fit: BoxFit.cover,
+      height: size,
+      placeholder: (context, url) => const Center(
+          child: CircularProgressIndicator(
+        color: AppColors.primaryColor,
+      )),
+      imageUrl: character.image,
     );
   }
 }

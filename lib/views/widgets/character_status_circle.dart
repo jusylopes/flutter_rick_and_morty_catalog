@@ -12,9 +12,14 @@ class CharacterStatusCircle extends StatelessWidget {
       height: 10,
       width: 10,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.colorStatus(status),
-      ),
+          shape: BoxShape.circle,
+          color: AppColors.colorStatus(status),
+          boxShadow: [
+            BoxShadow(
+                color: AppColors.colorStatus(status),
+                blurRadius: 5,
+                spreadRadius: 2)
+          ]),
     );
   }
 }

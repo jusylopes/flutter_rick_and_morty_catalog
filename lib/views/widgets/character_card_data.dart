@@ -9,31 +9,32 @@ class CharacterCardData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          child: Text(
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
             character.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: CharacterTextStyle.characterName,
           ),
-        ),
-        const SizedBox(height: 5),
-        Row(
-          children: <Widget>[
-            CharacterStatusCircle(status: character.status),
-            const SizedBox(width: 5),
-            Text(
-              '${character.status} - ${character.species}',
-              style: CharacterTextStyle.characterStatus,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
-      ],
+          const SizedBox(height: 5),
+          Row(
+            children: <Widget>[
+              CharacterStatusCircle(status: character.status),
+              const SizedBox(width: 5),
+              Text(
+                '${character.status} - ${character.species}',
+                style: CharacterTextStyle.characterStatus,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

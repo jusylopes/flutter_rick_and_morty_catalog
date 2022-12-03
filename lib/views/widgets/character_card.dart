@@ -9,9 +9,11 @@ class CharacterCard extends StatelessWidget {
   const CharacterCard({
     Key? key,
     required this.character,
+    required this.maxHeight,
   }) : super(key: key);
 
   final CharacterModel character;
+  final double maxHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +38,14 @@ class CharacterCard extends StatelessWidget {
               height: 100,
               width: double.infinity,
               color: AppColors.secondaryColor,
+              
               child: Row(
                 children: <Widget>[
-                  CharacterImage(character: character),
-                  const SizedBox(width: 150),
+                  CharacterImage(
+                    character: character,
+                    size: maxHeight,
+                  ),
+                  const SizedBox(width: 20),
                   CharacterCardData(character: character),
                 ],
               ),

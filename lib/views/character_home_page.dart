@@ -29,6 +29,7 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
           title: const Text(
             'The Rick and Morty Catalog',
           ),
+          toolbarHeight: 80,
           actions: <Widget>[
             IconButton(
               padding: const EdgeInsets.only(right: 25),
@@ -73,8 +74,8 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
                       }
                     }),
                   itemCount: character.length,
-                  itemBuilder: (context, index) =>
-                      CharacterCard(character: character[index]),
+                  itemBuilder: (context, index) => CharacterCard(
+                      character: character[index], maxHeight: maxHeight),
                 );
               },
             );

@@ -14,7 +14,7 @@ class CharacterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
+        
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
@@ -24,16 +24,13 @@ class CharacterDetailPage extends StatelessWidget {
 
             return SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: SizedBox.fromSize(
-                          size: Size.fromRadius(
-                            maxHeight * 0.15,
-                          ),
-                          child: CharacterImage(character: character))),
+                  ClipOval(
+                    child: CharacterImage(
+                      character: character,
+                      size: maxHeight * 0.3,
+                    ),
+                  ),
                   const SizedBox(height: 10),
                   Text(
                     character.name.toUpperCase(),
