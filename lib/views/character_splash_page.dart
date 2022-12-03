@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_home_page.dart';
+import 'package:flutter_rick_and_morty_catalog/views/character_home_page.dart';
 
 class CharacterSplashPage extends StatefulWidget {
   const CharacterSplashPage({Key? key}) : super(key: key);

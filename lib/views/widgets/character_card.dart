@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_detail_page.dart';
+import 'package:flutter_rick_and_morty_catalog/views/character_detail_page.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_status_circle.dart';
 
 class CharacterCard extends StatelessWidget {
