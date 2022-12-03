@@ -21,7 +21,7 @@ class _CharacterSplashPageState extends State<CharacterSplashPage>
       vsync: this,
     )..repeat();
 
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const CharacterHomePage()),

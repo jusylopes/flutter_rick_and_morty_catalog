@@ -27,9 +27,13 @@ class CharacterDetailPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                      height: maxHeight * 0.5,
-                      child: CharacterImage(character: character)),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: SizedBox.fromSize(
+                          size: Size.fromRadius(
+                            maxHeight * 0.15,
+                          ),
+                          child: CharacterImage(character: character))),
                   const SizedBox(height: 10),
                   Text(
                     character.name.toUpperCase(),

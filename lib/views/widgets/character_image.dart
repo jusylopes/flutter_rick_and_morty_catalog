@@ -11,6 +11,7 @@ class CharacterImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
+      
       tag: character.id,
       child: CachedNetworkImage(
         fit: BoxFit.cover,

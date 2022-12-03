@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 import 'package:flutter_rick_and_morty_catalog/views/character_detail_page.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_status_circle.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card_data.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_image.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard({
@@ -38,45 +37,10 @@ class CharacterCard extends StatelessWidget {
               width: double.infinity,
               color: AppColors.secondaryColor,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Hero(
-                    tag: character.id,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: CachedNetworkImage(
-                        placeholder: (context, url) => const Center(
-                            child: CircularProgressIndicator(
-                          color: AppColors.primaryColor,
-                        )),
-                        imageUrl: character.image,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 45),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        character.name,
-                        style: CharacterTextStyle.characterName,
-                        overflow: TextOverflow.visible,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          CharacterStatusCircle(status: character.status),
-                          const SizedBox(width: 5),
-                          Text(
-                            '${character.status} - ${character.species}',
-                            style: CharacterTextStyle.characterStatus,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
+                  CharacterImage(character: character),
+                  const SizedBox(width: 150),
+                  CharacterCardData(character: character),
                 ],
               ),
             ),
