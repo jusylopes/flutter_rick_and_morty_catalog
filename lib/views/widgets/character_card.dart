@@ -38,12 +38,14 @@ class CharacterCard extends StatelessWidget {
               height: 100,
               width: double.infinity,
               color: AppColors.secondaryColor,
-              
               child: Row(
                 children: <Widget>[
-                  CharacterImage(
-                    character: character,
-                    size: maxHeight,
+                  Container(
+                    color: AppColors.secondaryColor,
+                    child: CharacterImage(
+                      character: character,
+                      size: maxHeight,
+                    ),
                   ),
                   const SizedBox(width: 20),
                   CharacterCardData(character: character),

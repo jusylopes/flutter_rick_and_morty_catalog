@@ -22,75 +22,73 @@ class CharacterDetailPage extends StatelessWidget {
             final double maxHeight = constraints.maxHeight;
 
             return SingleChildScrollView(
-              child: Expanded(
-                child: Column(
-                  children: <Widget>[
-                    ClipOval(
-                      child: CharacterImage(
-                        character: character,
-                        size: maxHeight * 0.3,
+              child: Column(
+                children: <Widget>[
+                  ClipOval(
+                    child: CharacterImage(
+                      character: character,
+                      size: maxHeight * 0.3,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    character.name.toUpperCase(),
+                    style: CharacterTextStyle.characterNameDetail,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CharacterStatusCircle(status: character.status),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${character.status} - ${character.species}',
+                        style: CharacterTextStyle.characterStatus,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Container(
+                    height: maxHeight * 0.5,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.secondaryColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          InformationRow(
+                            label: 'Gender:',
+                            value: character.gender,
+                          ),
+                          InformationRow(
+                            label: 'Origin:',
+                            value: character.origin.name,
+                          ),
+                          InformationRow(
+                            label: 'Last known location:',
+                            value: character.location.name,
+                          ),
+                          InformationRow(
+                            label: 'Number of episodes:',
+                            value: character.episode.length.toString(),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      character.name.toUpperCase(),
-                      style: CharacterTextStyle.characterNameDetail,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CharacterStatusCircle(status: character.status),
-                        const SizedBox(width: 8),
-                        Text(
-                          '${character.status} - ${character.species}',
-                          style: CharacterTextStyle.characterStatus,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Container(
-                      height: maxHeight * 0.5,
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.secondaryColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            InformationRow(
-                              label: 'Gender:',
-                              value: character.gender,
-                            ),
-                            InformationRow(
-                              label: 'Origin:',
-                              value: character.origin.name,
-                            ),
-                            InformationRow(
-                              label: 'Last known location:',
-                              value: character.location.name,
-                            ),
-                            InformationRow(
-                              label: 'Number of episodes:',
-                              value: character.episode.length.toString(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
           },
