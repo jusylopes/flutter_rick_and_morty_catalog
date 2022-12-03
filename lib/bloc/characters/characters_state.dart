@@ -22,10 +22,10 @@ class SuccessState extends CharactersState {
 }
 
 class ErrorState extends CharactersState {
-  final String error;
+  final String message;
 
-  ErrorState(this.error);
+  ErrorState(this.message);
 
   @override
-  List<Object> get props => [error];
+  List<Object> get props => [message];
 }

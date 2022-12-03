@@ -9,7 +9,7 @@ class Repository extends IRepository {
   static const _baseApi = 'https://rickandmortyapi.com';
 
   @override
-  Future<List<CharacterModel>> loadAllCharacters({required int page}) async {
+  Future<List<CharacterModel>> getCharacters({required int page}) async {
     try {
       Response response = await dio.get('$_baseApi/api/character/?page=$page');
       final data = response.data;
@@ -20,6 +20,23 @@ class Repository extends IRepository {
           .toList();
 
       return characters;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<CharacterModel>> searchCharacter({required String name}) async {
+    try {
+      Response response = await dio.get('$_baseApi/api/character/?name=$name');
+      final data = response.data;
+
+      List<CharacterModel> character = data['results']
+          .map<CharacterModel>(
+              (characters) => CharacterModel.fromJson(characters))
+          .toList();
+
+      return character;
     } catch (e) {
       rethrow;
     }
