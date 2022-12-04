@@ -1,27 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
 
 class CharacterSearch extends SearchDelegate {
+  CharacterSearch({
+    required String hintText,
+  }) : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context).copyWith();
+  }
+
   @override
   List<Widget>? buildActions(BuildContext context) {
-    // TODO: implement buildActions
-    throw UnimplementedError();
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: const Icon(
+          Icons.clear,
+        ),
+      ),
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
-    throw UnimplementedError();
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(
+        Icons.arrow_back_ios,
+      ),
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
+    BlocProvider.of<SearchBloc>(context, listen: false)
+        .add(Search(query: query));
+    return BlocBuilder<SearchBloc, SearchState>(
+      builder: (context, state) {
+        if (state is SearchUninitialized) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.secondaryColor,
+            ),
+          );
+        } else if (state is SearchLoaded) {
+          final characters = state.characters;
+
+          if (characters.isEmpty) {
+            return const Center(
+              child: Text('No Results Found.'),
+            );
+          } else if (state is SearchError) {
+            return const Center(
+              child: Text('erro'),
+            );
+          }
+          return ListView.builder(
+            itemCount: characters.length,
+            itemBuilder: (BuildContext context, int index) =>
+                CharacterCard(character: characters[index]),
+          );
+        }
+        return const Center();
+      },
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
-    throw UnimplementedError();
+    return Container();
   }
 }

@@ -7,7 +7,12 @@ abstract class CharacterTheme {
         fontFamily: 'Poppins',
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(
+          centerTitle: true,
           backgroundColor: Colors.white,
+          toolbarHeight: 80,
+          iconTheme: IconThemeData(
+            color: AppColors.primaryColor,
+          ),
           titleTextStyle: TextStyle(
               color: AppColors.primaryColor,
               fontSize: 22,
@@ -16,5 +21,6 @@ abstract class CharacterTheme {
           elevation: 0,
         ),
         scaffoldBackgroundColor: AppColors.primaryColor,
+        splashColor: AppColors.primaryColor,
       );
 }

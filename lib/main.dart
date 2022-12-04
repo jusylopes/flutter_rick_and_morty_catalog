@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/theme.dart';
 import 'package:flutter_rick_and_morty_catalog/views/character_splash_page.dart';
@@ -20,8 +21,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CharactersBloc>(
-            create: (_) => CharactersBloc(repository: characterRepository)
-              ..add(LoadCharactersEvent())),
+          create: (_) => CharactersBloc(repository: characterRepository)
+            ..add(LoadCharactersEvent()),
+        ),
+        BlocProvider<SearchBloc>(
+            create: (_) => SearchBloc(repository: characterRepository)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

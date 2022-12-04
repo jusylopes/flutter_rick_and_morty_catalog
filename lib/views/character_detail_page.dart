@@ -16,6 +16,9 @@ class CharacterDetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
+          leading: const BackButton(
+            color: Colors.white,
+          ),
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
