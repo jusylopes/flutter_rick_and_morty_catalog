@@ -2,12 +2,14 @@ part of 'search_bloc.dart';
 
 @immutable
 abstract class SearchEvent extends Equatable {
-  @override
-  List<Object> get props => [];
+  const SearchEvent();
 }
 
 class Search extends SearchEvent {
-  Search(this.name);
+  const Search({required this.query});
 
-  final String name;
+  final String query;
+
+  @override
+  List<Object> get props => [];
 }

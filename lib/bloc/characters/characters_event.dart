@@ -6,6 +6,7 @@ abstract class CharactersEvent extends Equatable {
 }
 
 class LoadCharactersEvent extends CharactersEvent {
+  
   @override
   List<Object> get props => [];
 }

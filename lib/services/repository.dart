@@ -26,9 +26,9 @@ class Repository extends IRepository {
   }
 
   @override
-  Future<List<CharacterModel>> searchCharacter({required String name}) async {
+  Future<List<CharacterModel>> searchCharacter({required String query}) async {
     try {
-      Response response = await dio.get('$_baseApi/api/character/?name=$name');
+      Response response = await dio.get('$_baseApi/api/character/?name=$query');
       final data = response.data;
 
       List<CharacterModel> character = data['results']

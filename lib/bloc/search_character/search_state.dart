@@ -3,29 +3,28 @@ part of 'search_bloc.dart';
 @immutable
 abstract class SearchState extends Equatable {}
 
-class InitialState extends SearchState {
+class SearchInitial extends SearchState {
   @override
   List<Object> get props => [];
 }
 
-class LoadingState extends SearchState {
+class SearchUninitialized extends SearchState {
   @override
   List<Object> get props => [];
 }
 
-class SuccessState extends SearchState {
-  SuccessState({required this.characters});
+class SearchLoaded extends SearchState {
+  SearchLoaded({required this.characters});
   final List<CharacterModel> characters;
 
   @override
   List<Object> get props => [characters];
 }
 
-
-class ErrorState extends SearchState {
+class SearchError extends SearchState {
   final String message;
 
-  ErrorState(this.message);
+  SearchError(this.message);
 
   @override
   List<Object> get props => [message];
