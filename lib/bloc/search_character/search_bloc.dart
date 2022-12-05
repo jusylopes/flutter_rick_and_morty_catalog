@@ -15,7 +15,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   onSearch(Search event, Emitter<SearchState> emit) async {
-    emit(SearchUninitialized());
+    emit(SearchLoading());
 
     try {
       List<CharacterModel> characterList =

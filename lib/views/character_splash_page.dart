@@ -34,16 +34,13 @@ class _CharacterSplashPageState extends State<CharacterSplashPage>
     return Scaffold(
       backgroundColor: AppColors.portalColor,
       body: Center(
-        child: RotationTransition(
-          turns: Tween(begin: 0.0, end: 2.0).animate(_controller),
-          child: Container(
-            height: 280,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/portal.png'),
-                    fit: BoxFit.fitHeight)),
+        child: Stack(alignment: Alignment.center, children: <Widget>[
+          RotationTransition(
+            turns: Tween(begin: 0.0, end: 1.7).animate(_controller),
+            child: Image.asset('assets/images/portal.png', height: 300),
           ),
-        ),
+          Image.asset('assets/images/characters.png', height: 340),
+        ]),
       ),
     );
   }

@@ -40,8 +40,9 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
               ),
               onPressed: () {
                 showSearch(
-                    context: context,
-                    delegate: CharacterSearch(hintText: 'name character'));
+                  context: context,
+                  delegate: CharacterSearch(),
+                );
               },
             )
           ],

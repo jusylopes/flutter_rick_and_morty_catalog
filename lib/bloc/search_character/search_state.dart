@@ -8,7 +8,7 @@ class SearchInitial extends SearchState {
   List<Object> get props => [];
 }
 
-class SearchUninitialized extends SearchState {
+class SearchLoading extends SearchState {
   @override
   List<Object> get props => [];
 }
@@ -28,4 +28,9 @@ class SearchError extends SearchState {
 
   @override
   List<Object> get props => [message];
+}
+
+class SearchEmpty extends SearchState {
+  @override
+  List<Object> get props => [];
 }
