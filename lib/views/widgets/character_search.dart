@@ -6,12 +6,13 @@ import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
 
 class CharacterSearch extends SearchDelegate {
-  CharacterSearch()
-      : super(
-          searchFieldLabel: 'Search for characters by name...',
+  CharacterSearch({
+    String hintText = 'Search for characters by name...',
+  }) : super(
+          searchFieldLabel: hintText,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.search,
-          searchFieldStyle: CharacterTextStyle.titleAppBar,
+          searchFieldStyle: CharacterTextStyle.search,
         );
 
   @override
@@ -65,10 +66,10 @@ class CharacterSearch extends SearchDelegate {
             itemBuilder: (BuildContext context, int index) =>
                 CharacterCard(character: characters[index]),
           );
-
         } else if (state is SearchError) {
           return const Center(
-            child: Text('No Results Found.', style: TextStyle(color: Colors.white)),
+            child: Text('No Results Found.',
+                style: TextStyle(color: Colors.white)),
           );
         }
 

@@ -19,6 +19,7 @@ abstract class CharacterTheme {
         ),
         scaffoldBackgroundColor: AppColors.primaryColor,
         splashColor: AppColors.primaryColor,
+        hintColor: AppColors.primaryColor.withOpacity(0.4),
         
       );
 }
