@@ -1,16 +1,28 @@
-# flutter_rick_and_morty_catalog
+# 🥒 Rick and Morty Catalog
+## Sobre o projeto
 
-A new Flutter project.
+O Aplicativo consome a API [The Rick and Morty API
+](https://rickandmortyapi.com) e retorna uma lista de personagens com informações sobre eles.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Layout 
+<p>
+<img src="screenshots/Screenshot_1.png" width="20%">
+<img src="screenshots/Screenshot_2.png" width="20%">
+<img src="screenshots/Screenshot_3.png" width="20%">
+<img src="screenshots/Screenshot_4.png" width="20%">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Tecnologias utilizadas
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Flutter
+* The Rick and Morty API
+* Bloc
+* Cached Network Image
+
+
+### Desenvolvedora
+
+Jusy Lopes
+https://www.linkedin.com/in/jusylopes
