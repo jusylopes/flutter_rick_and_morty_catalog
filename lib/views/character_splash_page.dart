@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/icons.dart';
 import 'package:flutter_rick_and_morty_catalog/views/character_home_page.dart';
 
 class CharacterSplashPage extends StatefulWidget {
@@ -37,9 +38,9 @@ class _CharacterSplashPageState extends State<CharacterSplashPage>
         child: Stack(alignment: Alignment.center, children: <Widget>[
           RotationTransition(
             turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-            child: Image.asset('assets/images/portal.png', height: 300),
+            child: Image.asset(AppIcons.portal, height: 300),
           ),
-          Image.asset('assets/images/characters.png', height: 340),
+          Image.asset(AppIcons.rickAndMorty, height: 340),
         ]),
       ),
     );

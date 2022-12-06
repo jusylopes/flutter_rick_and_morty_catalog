@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 
 abstract class CharacterTextStyle {
@@ -36,9 +35,15 @@ abstract class CharacterTextStyle {
     fontWeight: FontWeight.w700,
   );
 
-    static const search = TextStyle(
+  static const search = TextStyle(
     color: AppColors.primaryColor,
     fontSize: 18,
     fontWeight: FontWeight.w700,
+  );
+
+  static const searchSuggestions = TextStyle(
+    color: Colors.white,
+    fontSize: 18,
+  
   );
 }

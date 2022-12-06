@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_rick_and_morty_catalog">
    <application
-        android:label="flutter_rick_and_morty_catalog"
+        android:label="Rick and Morty Catalog"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

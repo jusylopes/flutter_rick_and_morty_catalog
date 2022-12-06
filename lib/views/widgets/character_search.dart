@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
+import 'package:flutter_rick_and_morty_catalog/utils/icons.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
 
@@ -15,6 +16,14 @@ class CharacterSearch extends SearchDelegate {
           searchFieldStyle: CharacterTextStyle.search,
         );
 
+  final characters = [
+    'Morty Smith',
+    'Rick Sanchez',
+    'Summer Smith',
+    'Beth Smith',
+    'Jerry Smith'
+  ];
+
   @override
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith();
@@ -25,7 +34,12 @@ class CharacterSearch extends SearchDelegate {
     return [
       IconButton(
         onPressed: () {
-          query = '';
+          if (query.isEmpty) {
+            close(context, null);
+          } else {
+            query = '';
+            showSuggestions(context);
+          }
         },
         icon: const Icon(
           Icons.clear,
@@ -67,9 +81,18 @@ class CharacterSearch extends SearchDelegate {
                 CharacterCard(character: characters[index]),
           );
         } else if (state is SearchError) {
-          return const Center(
-            child: Text('No Results Found.',
-                style: TextStyle(color: Colors.white)),
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  AppIcons.notFound,
+                  height: 70,
+                ),
+                const Text('No Results Found.',
+                    style: TextStyle(color: Colors.white)),
+              ],
+            ),
           );
         }
 
@@ -80,6 +103,26 @@ class CharacterSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container();
+    final suggestions = query.isEmpty ? characters : [];
+
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final suggestion = suggestions[index];
+        return ListTile(
+            onTap: () {
+              query = suggestion;
+              showResults(context);
+            },
+            leading: Image.asset(
+              AppIcons().getIcon(suggestion),
+              height: 40,
+            ),
+            title: RichText(
+                text: TextSpan(
+                    text: suggestion,
+                    style: CharacterTextStyle.searchSuggestions)));
+      },
+    );
   }
 }
