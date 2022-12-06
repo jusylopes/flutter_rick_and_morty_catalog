@@ -5,6 +5,7 @@ import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/icons.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_error_message.dart';
 
 class CharacterSearch extends SearchDelegate {
   CharacterSearch({
@@ -81,18 +82,8 @@ class CharacterSearch extends SearchDelegate {
                 CharacterCard(character: characters[index]),
           );
         } else if (state is SearchError) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  AppIcons.notFound,
-                  height: 70,
-                ),
-                const Text('No Results Found.',
-                    style: TextStyle(color: Colors.white)),
-              ],
-            ),
+          return const CharacterErrorMessage(
+            message: 'No Results Found.',
           );
         }
 
@@ -110,19 +101,21 @@ class CharacterSearch extends SearchDelegate {
       itemBuilder: (context, index) {
         final suggestion = suggestions[index];
         return ListTile(
-            onTap: () {
-              query = suggestion;
-              showResults(context);
-            },
-            leading: Image.asset(
-              AppIcons().getIcon(suggestion),
-              height: 40,
-            ),
-            title: RichText(
-                text: TextSpan(
-                    text: suggestion,
-                    style: CharacterTextStyle.searchSuggestions)));
+          onTap: () {
+            query = suggestion;
+            showResults(context);
+          },
+          leading: Image.asset(
+            AppIcons().getIcon(suggestion),
+            height: 40,
+          ),
+          title: RichText(
+            text: TextSpan(
+                text: suggestion, style: CharacterTextStyle.searchSuggestions),
+          ),
+        );
       },
     );
   }
 }
+
