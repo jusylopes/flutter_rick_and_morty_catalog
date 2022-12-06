@@ -19,6 +19,9 @@ class CharacterErrorMessage extends StatelessWidget {
             AppIcons.notFound,
             height: 70,
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Text(
             message,
             style: const TextStyle(color: Colors.white),

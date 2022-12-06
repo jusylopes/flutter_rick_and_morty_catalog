@@ -15,10 +15,12 @@ class CharacterImage extends StatelessWidget {
     return CachedNetworkImage(
       fit: BoxFit.cover,
       height: size,
-      placeholder: (context, url) => const Center(
-          child: CircularProgressIndicator(
-        color: AppColors.primaryColor,
-      )),
+      placeholder: (context, url) => const Align(
+        alignment: Alignment.centerRight,
+        child: CircularProgressIndicator(
+          color: AppColors.primaryColor,
+        ),
+      ),
       imageUrl: character.image,
     );
   }

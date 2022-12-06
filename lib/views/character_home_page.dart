@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
+import 'package:flutter_rick_and_morty_catalog/views/widgets/character_error_message.dart';
 import 'package:flutter_rick_and_morty_catalog/views/widgets/character_search.dart';
 
 class CharacterHomePage extends StatefulWidget {
@@ -27,25 +28,27 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'The Rick and Morty Catalog',
-          ),
-          toolbarHeight: 80,
-          actions: <Widget>[
-            IconButton(
-              padding: const EdgeInsets.only(right: 25),
-              icon: const Icon(
-                Icons.search,
-                size: 40,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'The Rick and Morty Catalog',
               ),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: CharacterSearch(),
-                );
-              },
-            )
-          ],
+              const SizedBox(height: 10),
+              IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  size: 40,
+                ),
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: CharacterSearch(),
+                  );
+                },
+              )
+            ],
+          ),
         ),
         body: BlocBuilder<CharactersBloc, CharactersState>(
           builder: (context, state) {
@@ -56,8 +59,8 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
                     CircularProgressIndicator(color: AppColors.secondaryColor),
               );
             } else if (state is ErrorState && character.isEmpty) {
-              return const Center(
-                child: Text('erro'),
+              return const CharacterErrorMessage(
+                message: 'Error loading characters...',
               );
             } else if (state is SuccessState) {
               character.addAll(state.characters);
