@@ -4,7 +4,7 @@ class AppIcons {
 
   static const portal = '$_defaultPath/portal.png';
   static const rickAndMorty = '$_defaultPath/rick_and_morty.png';
-   static const notFound = '$_defaultPath/morty_not_found.png';
+  static const notFound = '$_defaultPath/morty_not_found.png';
   static const morty = '$_characters/morty_smith.png';
   static const rick = '$_characters/rick_sanchez.png';
   static const summer = '$_characters/summer_smith.png';
