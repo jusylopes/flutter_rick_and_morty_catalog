@@ -27,11 +27,9 @@ class CharacterDetailPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  ClipOval(
-                    child: CharacterImage(
-                      character: character,
-                      size: maxHeight * 0.3,
-                    ),
+                  CharacterImage(
+                    character: character,
+                    size: maxHeight * 0.3,
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -64,7 +62,7 @@ class CharacterDetailPage extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.secondaryColor,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(50),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),

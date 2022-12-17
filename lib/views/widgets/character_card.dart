@@ -15,32 +15,39 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double sizeImage = 120;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 8,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: const BorderRadius.horizontal(
+          left: Radius.circular(sizeImage),
+          right: Radius.circular(80),
+        ),
         child: Material(
           child: InkWell(
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          CharacterDetailPage(character: character)));
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      CharacterDetailPage(character: character),
+                ),
+              );
             },
             splashColor: AppColors.primaryColor.withOpacity(0.1),
             child: Ink(
-              height: 100,
+              height: 120,
               width: double.infinity,
               color: AppColors.secondaryColor,
               child: Row(
                 children: <Widget>[
                   CharacterImage(
                     character: character,
-                    size: 100,
+                    size: sizeImage,
                   ),
                   const SizedBox(width: 20),
                   CharacterCardData(character: character),
