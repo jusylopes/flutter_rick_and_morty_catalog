@@ -15,7 +15,7 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double sizeImage = 120;
+    const double sizeImage = 100;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -25,7 +25,7 @@ class CharacterCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: const BorderRadius.horizontal(
           left: Radius.circular(sizeImage),
-          right: Radius.circular(80),
+          right: Radius.circular(90),
         ),
         child: Material(
           child: InkWell(
@@ -40,7 +40,7 @@ class CharacterCard extends StatelessWidget {
             },
             splashColor: AppColors.primaryColor.withOpacity(0.1),
             child: Ink(
-              height: 120,
+              height: 100,
               width: double.infinity,
               color: AppColors.secondaryColor,
               child: Row(

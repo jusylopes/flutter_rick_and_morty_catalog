@@ -62,7 +62,7 @@ class CharacterDetailPage extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.secondaryColor,
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(40),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
