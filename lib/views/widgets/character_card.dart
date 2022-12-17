@@ -38,12 +38,9 @@ class CharacterCard extends StatelessWidget {
               color: AppColors.secondaryColor,
               child: Row(
                 children: <Widget>[
-                  Container(
-                    color: AppColors.secondaryColor,
-                    child: CharacterImage(
-                      character: character,
-                      size: 100,
-                    ),
+                  CharacterImage(
+                    character: character,
+                    size: 100,
                   ),
                   const SizedBox(width: 20),
                   CharacterCardData(character: character),
