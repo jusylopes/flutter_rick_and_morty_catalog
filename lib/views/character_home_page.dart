@@ -89,4 +89,6 @@ class _CharacterHomePageState extends State<CharacterHomePage> {
     _scrollController.dispose();
     super.dispose();
   }
+
+  
 }
