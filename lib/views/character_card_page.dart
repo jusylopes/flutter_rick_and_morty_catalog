@@ -25,36 +25,38 @@ class _CharacterCardPageState extends State<CharacterCardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CharactersBloc, CharactersState>(
-      builder: (context, state) {
-        if (state is InitialState ||
-            state is LoadingState && character.isEmpty) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.secondaryColor),
+    return Center(
+      child: BlocBuilder<CharactersBloc, CharactersState>(
+        builder: (context, state) {
+          if (state is InitialState ||
+              state is LoadingState && character.isEmpty) {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColors.secondaryColor),
+            );
+          } else if (state is ErrorState && character.isEmpty) {
+            return const CharacterErrorMessage(
+              message: 'Error loading characters...',
+            );
+          } else if (state is SuccessState) {
+            character.addAll(state.characters);
+          }
+          return ListView.builder(
+            controller: _scrollController
+              ..addListener(() async {
+                if (_scrollController.position.pixels ==
+                        _scrollController.position.maxScrollExtent &&
+                    !BlocProvider.of<CharactersBloc>(context).isFetching) {
+                  BlocProvider.of<CharactersBloc>(context)
+                      .add(LoadCharactersEvent());
+                }
+              }),
+            itemCount: character.length,
+            itemBuilder: (context, index) => CharacterCard(
+              character: character[index],
+            ),
           );
-        } else if (state is ErrorState && character.isEmpty) {
-          return const CharacterErrorMessage(
-            message: 'Error loading characters...',
-          );
-        } else if (state is SuccessState) {
-          character.addAll(state.characters);
-        }
-        return ListView.builder(
-          controller: _scrollController
-            ..addListener(() async {
-              if (_scrollController.position.pixels ==
-                      _scrollController.position.maxScrollExtent &&
-                  !BlocProvider.of<CharactersBloc>(context).isFetching) {
-                BlocProvider.of<CharactersBloc>(context)
-                    .add(LoadCharactersEvent());
-              }
-            }),
-          itemCount: character.length,
-          itemBuilder: (context, index) => CharacterCard(
-            character: character[index],
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 

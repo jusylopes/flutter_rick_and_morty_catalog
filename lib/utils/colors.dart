@@ -6,6 +6,7 @@ class AppColors {
   static const Color portalColor = Color(0xff202329);
   static const Color aliveColor = Color(0xff617734);
   static const Color deadColor = Color(0xffe85356);
+  static const Color cColor = Color(0xfffff874);
 
   static colorStatus(String status) {
     return status == 'Alive'

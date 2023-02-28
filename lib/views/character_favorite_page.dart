@@ -4,14 +4,14 @@ import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import '../services/repository_interface.dart';
 import 'character_detail_page.dart';
 
-class FavoritePage extends StatefulWidget {
-  const FavoritePage({super.key});
+class CharacterFavoritePage extends StatefulWidget {
+  const CharacterFavoritePage({super.key});
 
   @override
-  State<FavoritePage> createState() => _FavoritePageState();
+  State<CharacterFavoritePage> createState() => _CharacterFavoritePageState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _CharacterFavoritePageState extends State<CharacterFavoritePage> {
   List<CharacterModel> characterList = [];
   late IRepository repository;
 

@@ -75,11 +75,11 @@ class CharacterDetailPage extends StatelessWidget {
                           ),
                           InformationRow(
                             label: 'Origin:',
-                            value: character.origin.name,
+                            value: 'character.origin.name',
                           ),
                           InformationRow(
                             label: 'Last known location:',
-                            value: character.location.name,
+                            value: 'character.location.name',
                           ),
                           InformationRow(
                             label: 'Number of episodes:',
