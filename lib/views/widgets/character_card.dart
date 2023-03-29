@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/favorite_character/favorite_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/views/character_detail_page.dart';
@@ -51,6 +53,20 @@ class CharacterCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 20),
                   CharacterCardData(character: character),
+                  BlocBuilder<FavoriteBloc, FavoriteState>(
+                    builder: (context, state) {
+                      return IconButton(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(horizontal: 35),
+                          onPressed: () {
+                            context
+                                .read<FavoriteBloc>()
+                                .add(AddFavoriteListCharacter(character));
+                          },
+                          iconSize: 30,
+                          icon: const Icon(Icons.favorite));
+                    },
+                  )
                 ],
               ),
             ),

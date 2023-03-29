@@ -25,11 +25,13 @@ class CharacterCardData extends StatelessWidget {
             children: <Widget>[
               CharacterStatusCircle(status: character.status),
               const SizedBox(width: 8),
-              Text(
-                '${character.status} - ${character.species}',
-                style: CharacterTextStyle.characterStatus,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+              Expanded(
+                child: Text(
+                  '${character.status} - ${character.species}',
+                  style: CharacterTextStyle.characterStatus,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
               ),
             ],
           ),
