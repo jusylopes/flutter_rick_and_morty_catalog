@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_rick_and_morty_catalog/models/location_model.dart';
 
 class CharacterModel {
-  CharacterModel({
+  CharacterModel( {
     required this.id,
     required this.name,
     required this.status,
@@ -30,7 +30,7 @@ class CharacterModel {
   final List<String> episode;
   final String url;
   final DateTime created;
-
+ 
   factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         id: json["id"],
         name: json["name"],
@@ -44,6 +44,7 @@ class CharacterModel {
         episode: List<String>.from(json["episode"].map((x) => x)),
         url: json["url"],
         created: DateTime.parse(json["created"]),
+      
       );
 
   factory CharacterModel.toString(String str) =>

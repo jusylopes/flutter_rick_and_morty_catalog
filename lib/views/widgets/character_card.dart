@@ -62,10 +62,6 @@ class CharacterCard extends StatelessWidget {
                             context
                                 .read<FavoriteBloc>()
                                 .add(AddFavoriteListCharacter(character));
-                            const snackBar = SnackBar(
-                                content: Text('Added to your Favorite List!'));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
                           },
                           iconSize: 30,
                           icon: const Icon(Icons.favorite));
