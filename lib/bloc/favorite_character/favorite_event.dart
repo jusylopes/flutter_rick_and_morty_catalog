@@ -6,18 +6,10 @@ abstract class FavoriteEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AddFavoriteListCharacter extends FavoriteEvent {
+class ToggleInFavorites extends FavoriteEvent {
   final CharacterModel character;
 
-  const AddFavoriteListCharacter(this.character);
-  @override
-  List<Object> get props => [character];
-}
-
-class RemoveFavoriteListCharacter extends FavoriteEvent {
-  final CharacterModel character;
-
-  const RemoveFavoriteListCharacter(this.character);
+  const ToggleInFavorites(this.character);
   @override
   List<Object> get props => [character];
 }
