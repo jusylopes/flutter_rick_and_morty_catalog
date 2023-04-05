@@ -7,10 +7,11 @@ O Aplicativo consome a API [The Rick and Morty API
 
 ## Layout 
 <p>
-<img src="screenshots/Screenshot_1.png" width="22%">
-<img src="screenshots/Screenshot_2.png" width="22%">
-<img src="screenshots/Screenshot_3.png" width="22%">
-<img src="screenshots/Screenshot_4.png" width="22%">
+<img src="screenshots/Screenshot_1.png" width="19%">
+<img src="screenshots/Screenshot_2.png" width="19%">
+<img src="screenshots/Screenshot_3.png" width="19%">
+<img src="screenshots/Screenshot_4.png" width="19%">
+<img src="screenshots/Screenshot_5.png" width="19%">
 </p>
 
 
