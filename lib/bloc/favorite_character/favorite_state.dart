@@ -4,6 +4,9 @@ class FavoriteState extends Equatable {
   final List<CharacterModel> favoriteList;
 
   const FavoriteState({this.favoriteList = const <CharacterModel>[]});
+  FavoriteState copyWith({List<CharacterModel>? favoriteList}) {
+    return FavoriteState(favoriteList: favoriteList ?? this.favoriteList);
+  }
 
   @override
   List<Object> get props => [favoriteList];
