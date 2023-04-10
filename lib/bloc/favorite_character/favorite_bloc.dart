@@ -14,10 +14,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     final state = this.state;
 
     if (state.favoriteList.contains(event.character) == false) {
-      emit(state.copyWith(
+      emit(FavoriteState(
           favoriteList: List.from(state.favoriteList)..add(event.character)));
     } else {
-      emit(state.copyWith(
+      emit(FavoriteState(
           favoriteList: List.from(state.favoriteList)
             ..remove(event.character)));
     }
