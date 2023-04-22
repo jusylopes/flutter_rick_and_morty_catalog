@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/characters/character_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/bloc/favorite_character/favorite_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
@@ -17,12 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final characterRepository = Repository(Dio());
+    final characterRepository = Repository();
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider<CharactersBloc>(
-          create: (_) => CharactersBloc(repository: characterRepository)
+        BlocProvider<CharacterBloc>(
+          create: (_) => CharacterBloc(repository: characterRepository)
             ..add(LoadCharactersEvent()),
         ),
         BlocProvider<FavoriteBloc>(create: (_) => FavoriteBloc()),
