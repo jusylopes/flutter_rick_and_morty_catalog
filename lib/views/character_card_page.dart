@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rick_and_morty_catalog/bloc/characters/characters_bloc.dart';
+import 'package:flutter_rick_and_morty_catalog/bloc/characters/character_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
@@ -26,7 +26,7 @@ class _CharacterCardPageState extends State<CharacterCardPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<CharactersBloc, CharactersState>(
+      child: BlocBuilder<CharacterBloc, CharacterState>(
         builder: (context, state) {
           if (state is InitialState ||
               state is LoadingState && character.isEmpty) {
@@ -45,8 +45,8 @@ class _CharacterCardPageState extends State<CharacterCardPage> {
               ..addListener(() async {
                 if (_scrollController.position.pixels ==
                         _scrollController.position.maxScrollExtent &&
-                    !BlocProvider.of<CharactersBloc>(context).isFetching) {
-                  BlocProvider.of<CharactersBloc>(context)
+                    !BlocProvider.of<CharacterBloc>(context).isFetching) {
+                  BlocProvider.of<CharacterBloc>(context)
                       .add(LoadCharactersEvent());
                 }
               }),
