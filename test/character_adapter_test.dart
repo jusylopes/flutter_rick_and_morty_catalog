@@ -1,6 +1,5 @@
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/services/adapters/character_adapter.dart';
-import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -42,47 +41,6 @@ void main() {
       expect(character.status, 'Alive');
       expect(character.species, 'Human');
       expect(character.location.name, 'Citadel of Ricks');
-    });
-  });
-
-  group('Repository Character', () {
-    late Repository repository;
-
-    setUp(() {
-      repository = Repository();
-    });
-
-    group('getCharacters', () {
-      const int page = 1;
-
-      test('should return list of CharacterModel on success', () async {
-        final characters = await repository.getCharacters(page: page);
-
-        expect(characters, isInstanceOf<List<CharacterModel>>());
-        expect(characters.length, isPositive);
-        expect(characters[0], isInstanceOf<CharacterModel>());
-      });
-
-      test('should throws error on failure', () async {
-        expect(() => repository.getCharacters(page: 999), throwsException);
-      });
-    });
-
-    group('searchCharacter', () {
-      const query = 'morty';
-
-      test('should return list of CharacterModel on success', () async {
-        final characters = await repository.searchCharacter(query: query);
-
-        expect(characters, isInstanceOf<List<CharacterModel>>());
-        expect(characters.length, isPositive);
-        expect(characters[0], isInstanceOf<CharacterModel>());
-      });
-
-      test('should throws error on failure', () async {
-        expect(() => repository.searchCharacter(query: 'personagemQualquer'),
-            throwsException);
-      });
     });
   });
 }

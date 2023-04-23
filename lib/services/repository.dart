@@ -6,7 +6,8 @@ import 'package:flutter_rick_and_morty_catalog/services/repository_interface.dar
 import '../utils/constants.dart';
 
 class Repository extends IRepository {
-  final dio = Dio();
+  final Dio dio;
+  Repository(this.dio);
 
   @override
   Future<List<CharacterModel>> getCharacters({required int page}) async {
