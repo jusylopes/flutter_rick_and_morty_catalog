@@ -4,11 +4,11 @@ import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class DioMock extends Mock implements Dio {}
+class MockDio extends Mock implements Dio {}
 
 void main() {
   group('Repository Character', () {
-    final dio = DioMock();
+    late MockDio dio;
     late Repository repository;
     final response = Response(
       statusCode: 200,
@@ -16,10 +16,11 @@ void main() {
       requestOptions: RequestOptions(path: '/'),
     );
 
-    when(() => dio.get(any())).thenAnswer((_) async => response);
-
     setUp(() {
+      dio = MockDio();
       repository = Repository(dio);
+            
+      when(() => dio.get(any())).thenAnswer((_) async => response);
     });
 
     group('getCharacters', () {
