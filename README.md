@@ -1,27 +1,21 @@
-# 🥒 Rick and Morty Catalog
+# 🔫 Valorant Game Guide
 ## Sobre o projeto
 
-O Aplicativo consome a API [The Rick and Morty API
-](https://rickandmortyapi.com) e retorna uma lista de personagens com informações sobre eles.
+O Aplicativo consome a API [Valorant API
+](https://valorant-api.com).
 
 
 ## Layout 
 <p>
-<img src="screenshots/Screenshot_1.png" width="19%">
-<img src="screenshots/Screenshot_2.png" width="19%">
-<img src="screenshots/Screenshot_3.png" width="19%">
-<img src="screenshots/Screenshot_4.png" width="19%">
-<img src="screenshots/Screenshot_5.png" width="19%">
+
 </p>
 
 
 ### Tecnologias utilizadas
 
 * Flutter
-* The Rick and Morty API
+* Valorant API
 * Bloc
-* Cached Network Image
-
 
 ### Desenvolvedora
 
