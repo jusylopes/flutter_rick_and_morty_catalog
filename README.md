@@ -21,6 +21,7 @@ O Aplicativo consome a API [The Rick and Morty API
 * The Rick and Morty API
 * Bloc
 * Cached Network Image
+* Testes Unitários
 
 
 ### Desenvolvedora
