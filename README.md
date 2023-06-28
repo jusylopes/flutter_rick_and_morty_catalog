@@ -16,8 +16,11 @@ O Aplicativo consome a API [Valorant API
 * Flutter
 * Valorant API
 * Bloc
+* Cached Network Image
+
 
 ### Desenvolvedora
 
 Jusy Lopes
 https://www.linkedin.com/in/jusylopes
+
