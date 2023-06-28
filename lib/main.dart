@@ -6,7 +6,7 @@ import 'package:flutter_rick_and_morty_catalog/bloc/favorite_character/favorite_
 import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/services/repository.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/theme.dart';
-import 'package:flutter_rick_and_morty_catalog/views/character_splash_page.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: CharacterTheme.dark,
-        home: const CharacterSplashPage(),
+        home: const SplashScreen(),
         title: 'Rick and Morty Catalog',
       ),
     );

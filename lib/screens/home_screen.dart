@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rick_and_morty_catalog/views/character_card_page.dart';
-import 'package:flutter_rick_and_morty_catalog/views/character_favorite_page.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_search.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/character_screen.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/character_favorite_screen.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_search.dart';
 
-class CharacterHomePage extends StatefulWidget {
-  const CharacterHomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<CharacterHomePage> createState() => _CharacterHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _CharacterHomePageState extends State<CharacterHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    const CharacterCardPage(),
-    const CharacterFavoritePage(),
+    const CharacterScreen(),
+    const CharacterFavoriteScreen(),
   ];
 
   void _onItemTapped(int index) {

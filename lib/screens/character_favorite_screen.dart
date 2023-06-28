@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_error_message.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_card.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_error_message.dart';
 import '../bloc/favorite_character/favorite_bloc.dart';
 
-class CharacterFavoritePage extends StatefulWidget {
-  const CharacterFavoritePage({super.key});
+class CharacterFavoriteScreen extends StatefulWidget {
+  const CharacterFavoriteScreen({super.key});
 
   @override
-  State<CharacterFavoritePage> createState() => _CharacterFavoritePageState();
+  State<CharacterFavoriteScreen> createState() =>
+      _CharacterFavoriteScreenState();
 }
 
-class _CharacterFavoritePageState extends State<CharacterFavoritePage> {
+class _CharacterFavoriteScreenState extends State<CharacterFavoriteScreen> {
   final List<CharacterModel> favoriteList = [];
 
   @override

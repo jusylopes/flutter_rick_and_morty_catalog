@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/icons.dart';
-import 'package:flutter_rick_and_morty_catalog/views/character_home_page.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/home_screen.dart';
 
-class CharacterSplashPage extends StatefulWidget {
-  const CharacterSplashPage({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<CharacterSplashPage> createState() => _CharacterSplashPageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _CharacterSplashPageState extends State<CharacterSplashPage>
+class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -25,7 +25,7 @@ class _CharacterSplashPageState extends State<CharacterSplashPage>
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const CharacterHomePage()),
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     });
   }

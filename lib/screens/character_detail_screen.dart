@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_image.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_status_circle.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_image.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_status_circle.dart';
 
-class CharacterDetailPage extends StatelessWidget {
-  const CharacterDetailPage({Key? key, required this.character})
+class CharacterDetailScreen extends StatelessWidget {
+  const CharacterDetailScreen({Key? key, required this.character})
       : super(key: key);
 
   final CharacterModel character;
@@ -73,11 +73,11 @@ class CharacterDetailPage extends StatelessWidget {
                             label: 'Gender:',
                             value: character.gender,
                           ),
-                           InformationRow(
+                          InformationRow(
                             label: 'Origin:',
                             value: character.origin.name,
                           ),
-                           InformationRow(
+                          InformationRow(
                             label: 'Last known location:',
                             value: character.location.name,
                           ),

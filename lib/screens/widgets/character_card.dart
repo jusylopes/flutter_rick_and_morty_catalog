@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/bloc/favorite_character/favorite_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_rick_and_morty_catalog/views/character_detail_page.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card_data.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_image.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/character_detail_screen.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_card_data.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_image.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard({
@@ -36,7 +36,7 @@ class CharacterCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      CharacterDetailPage(character: character),
+                      CharacterDetailScreen(character: character),
                 ),
               );
             },

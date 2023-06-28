@@ -3,17 +3,17 @@ import 'package:flutter_rick_and_morty_catalog/bloc/characters/character_bloc.da
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty_catalog/models/character_model.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_error_message.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_card.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_error_message.dart';
 
-class CharacterCardPage extends StatefulWidget {
-  const CharacterCardPage({super.key});
+class CharacterScreen extends StatefulWidget {
+  const CharacterScreen({super.key});
 
   @override
-  State<CharacterCardPage> createState() => _CharacterCardPageState();
+  State<CharacterScreen> createState() => _CharacterScreenState();
 }
 
-class _CharacterCardPageState extends State<CharacterCardPage> {
+class _CharacterScreenState extends State<CharacterScreen> {
   final List<CharacterModel> character = [];
   late ScrollController _scrollController;
 

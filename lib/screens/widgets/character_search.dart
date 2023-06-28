@@ -4,8 +4,8 @@ import 'package:flutter_rick_and_morty_catalog/bloc/search_character/search_bloc
 import 'package:flutter_rick_and_morty_catalog/utils/colors.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/icons.dart';
 import 'package:flutter_rick_and_morty_catalog/utils/text_styles.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_card.dart';
-import 'package:flutter_rick_and_morty_catalog/views/widgets/character_error_message.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_card.dart';
+import 'package:flutter_rick_and_morty_catalog/screens/widgets/character_error_message.dart';
 
 class CharacterSearch extends SearchDelegate {
   CharacterSearch({
