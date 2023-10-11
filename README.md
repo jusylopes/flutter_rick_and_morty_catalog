@@ -25,5 +25,4 @@ O Aplicativo consome a API [The Rick and Morty API
 
 ### Desenvolvedora
 
-Jusy Lopes
-https://www.linkedin.com/in/jusylopes
+<a href="https://www.linkedin.com/in/jusy-lopes/" > <img align="center" src="https://img.shields.io/badge/- jusylopes-05122A?style=flat&logo=linkedin" alt="linkedin"/>
